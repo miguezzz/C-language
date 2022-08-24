@@ -1,24 +1,45 @@
 #include <stdio.h>
-#include <stdlib.h> //toupper() e tolower()
 
 int main(void) {
 
-    char palavra1[100];
-    char palavra2[100];
-    char palavra3[100];
+    char string[100];
     int i;
 
-    scanf("%s", palavra1);
-    scanf("%s", palavra2);
-    scanf("%s", palavra3);
+    gets(string);
 
-    printf("%s %s %s", palavra1, palavra2, palavra3);
+    for (i = 0; string[i] != '\0'; i++)
+    {
 
-    toupper(palavra1[0]);
-    toupper(palavra2[0]);
-    toupper(palavra3[0]);
+        if(i == 0)
+        {
+            if(string[i] >= 'a' && string[i] <= 'z')
+                printf("%c", string[i] - 'a' + 'A');
+            else
+                printf("%c", string[i]);
+        }
+        else
+        {
+            if(string[i] >= 'A' && string[i] <= 'Z')
+                printf("%c", string[i] - 'A' + 'a');
+            else
+                printf("%c", string[i]);
+        }
 
-    printf("%s %s %s", palavra1, palavra2, palavra3);
+        if(string[i] == ' ')
+        {
+            if(string[i + 1] >= 'a' && string[i + 1] <= 'z')
+            {
+                printf("%c", string[i + 1] - 'a' + 'A');
+                i++; //para parar de repetir a letra...
+            }
+            else
+                printf("%c", string[i]);
+        }
+
+    }
+
+
+
 
     return 0;
 }
